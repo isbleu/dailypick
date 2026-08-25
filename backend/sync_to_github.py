@@ -29,6 +29,16 @@ def sync():
         
     os.makedirs(target_data_dir, exist_ok=True)
     
+    # 0. 同步前端静态页面资源 (HTML/CSS/JS)
+    import shutil
+    frontend_public_dir = os.path.join(Config.PROJECT_ROOT, "frontend", "public")
+    for static_file in ["index.html", "index.css", "index.js"]:
+        src_path = os.path.join(frontend_public_dir, static_file)
+        dst_path = os.path.join(target_pick_dir, static_file)
+        if os.path.exists(src_path):
+            shutil.copy2(src_path, dst_path)
+    print(f"[STATIC] 成功同步前端最新页面资产至 GitHub Pages 目录。")
+    
     # 1. 从本地数据库中查询所有的决策数据
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
