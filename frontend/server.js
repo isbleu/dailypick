@@ -63,16 +63,28 @@ app.get('/api/decisions/:date', (req, res) => {
 
     // 将结构化 JSON 字符串解析为 JSON 对象返回
     try {
+      let dataObj = {};
+      if (row.decision_json) {
+        try {
+          dataObj = JSON.parse(row.decision_json);
+        } catch (e) {
+          console.error("解析 decision_json 失败:", e);
+        }
+      }
+
+      // 组装并补充字段，确保完整性与向前兼容
       res.json({
         success: true,
         data: {
           date: row.date,
-          market_summary: row.market_summary,
-          top_three_stocks: JSON.parse(row.top_three_json),
-          excluded_stocks: JSON.parse(row.excluded_json),
-          watch_list: JSON.parse(row.watch_json),
-          operation_summary: row.operation_summary,
-          full_markdown: row.full_markdown,
+          market_summary: dataObj.market_summary || row.market_summary,
+          bad_news_table: dataObj.bad_news_table || [],
+          catalyst_list: dataObj.catalyst_list || [],
+          top_three_stocks: dataObj.top_three_stocks || (row.top_three_json ? JSON.parse(row.top_three_json) : []),
+          excluded_stocks: dataObj.excluded_stocks || (row.excluded_json ? JSON.parse(row.excluded_json) : []),
+          watch_list: dataObj.watch_list || (row.watch_json ? JSON.parse(row.watch_json) : []),
+          operation_summary: dataObj.operation_summary || row.operation_summary,
+          full_markdown: row.full_markdown || dataObj.full_markdown_report,
           created_at: row.created_at
         }
       });
