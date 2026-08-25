@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>湖滨四季每日自动化选股系统 - 可视化管理后台</title>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- MarkedJS (Markdown Parser) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Custom Style Sheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- 背景环境装饰渐变 -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <div class="app-container">
+    <!-- 头部导航栏 -->
+    <header class="app-header">
+      <div class="logo">
+        <i class="fa-solid fa-compass-drafting brand-icon"></i>
+        <div class="logo-text">
+          <h1>湖滨四季</h1>
+          <span>DAILY STOCK AUTOMATION SYSTEM</span>
+        </div>
+      </div>
+      
+      <!-- 主视图切换 Tab -->
+      <div class="view-switch-tabs">
+        <button class="view-tab-btn active" id="tab-btn-daily">
+          <i class="fa-solid fa-file-lines"></i> 每日决策报告
+        </button>
+        <button class="view-tab-btn" id="tab-btn-tracker">
+          <i class="fa-solid fa-chart-line"></i> 📊 战法实盘追踪与胜率
+        </button>
+      </div>
+
+      <div class="header-meta">
+        <div class="date-selector-wrapper" id="date-selector-container">
+          <label for="date-select"><i class="fa-regular fa-calendar-days"></i> 选股日期</label>
+          <select id="date-select" class="custom-select">
+            <option value="">暂无可选日期</option>
+          </select>
+        </div>
+        <div class="server-status">
+          <span class="status-dot online"></span>
+          <span>系统在线</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 视图 1：每日决策详情看板 -->
+    <main class="app-main" id="main-content" style="display: none;">
+      <!-- 第一大列：大局研判与市场排除 -->
+      <section class="main-column col-left">
+        <!-- 核心卡片 1：市场环境与模式判定 -->
+        <div class="card glass-card fade-in">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-chart-line header-icon"></i>一、市场环境与模式判定</h2>
+          </div>
+          <div class="card-body">
+            <p id="market-summary-text" class="summary-text">正在加载大盘评述...</p>
+          </div>
+        </div>
+
+        <!-- 核心卡片 2：盘前利空排除扫描 -->
+        <div class="card glass-card fade-in" style="animation-delay: 0.1s;">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-shield-halved header-icon"></i>二、盘前利空排除矩阵</h2>
+          </div>
+          <div class="card-body">
+            <div class="table-container">
+              <table class="modern-table">
+                <thead>
+                  <tr>
+                    <th>利空来源</th>
+                    <th>具体内容</th>
+                    <th>排除板块/个股</th>
+                  </tr>
+                </thead>
+                <tbody id="bad-news-table-body">
+                  <tr>
+                    <td colspan="3" class="text-center text-muted">暂无利空扫描记录</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 核心卡片 3：核心催化梳理 -->
+        <div class="card glass-card fade-in" style="animation-delay: 0.2s;">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-fire header-icon"></i>三、核心产业催化深度梳理</h2>
+          </div>
+          <div class="card-body">
+            <div id="catalyst-accordion" class="accordion">
+              <!-- 催化折叠面板 -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 第二大列：首选三标与操作建议 -->
+      <section class="main-column col-right">
+        <!-- 核心卡片 4：首选三标（打分与介入） -->
+        <div class="card glass-card highlight-card fade-in">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-medal header-icon"></i>四、首选三标 (按战法打分排序)</h2>
+          </div>
+          <div class="card-body">
+            <!-- 股票切换 Tab 导航 -->
+            <div class="stock-tabs" id="stock-tabs">
+              <!-- Tab 按钮 -->
+            </div>
+
+            <!-- 选股卡片详情 -->
+            <div class="stock-detail-content" id="stock-detail-content">
+              <!-- 动态载入股票详情 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 核心卡片 5：今日放弃/排除个股 与 关注池 -->
+        <div class="double-card-row">
+          <!-- 今日排除 -->
+          <div class="card glass-card fade-in" style="animation-delay: 0.1s;">
+            <div class="card-header">
+              <h2><i class="fa-solid fa-ban header-icon danger"></i>五、今日放弃/排除个股</h2>
+            </div>
+            <div class="card-body scroll-body">
+              <ul class="stock-list-simple" id="excluded-stock-list">
+                <!-- 排除列表 -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- 关注池 -->
+          <div class="card glass-card fade-in" style="animation-delay: 0.2s;">
+            <div class="card-header">
+              <h2><i class="fa-regular fa-star header-icon warning"></i>六、持续关注池</h2>
+            </div>
+            <div class="card-body scroll-body">
+              <ul class="stock-list-simple" id="watch-stock-list">
+                <!-- 关注池列表 -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 核心卡片 6：操作总结 -->
+        <div class="card glass-card fade-in" style="animation-delay: 0.3s;">
+          <div class="card-header">
+            <h2><i class="fa-solid fa-circle-info header-icon text-color-blue"></i>七、今日操作核心总结</h2>
+          </div>
+          <div class="card-body markdown-body" id="operation-summary-text">
+            <!-- 渲染好的操作总结 -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 视图 2：实盘跟踪与历史胜率复盘看板 -->
+    <main class="app-main tracker-view" id="tracker-content" style="display: none;">
+      <!-- KPI 胜率与统计卡片 -->
+      <section class="tracker-kpi-grid">
+        <div class="kpi-card glass-card">
+          <div class="kpi-icon win-bg"><i class="fa-solid fa-trophy"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">战法整体胜率</span>
+            <div class="kpi-value highlight-green" id="stat-win-rate">--%</div>
+            <span class="kpi-sub" id="stat-win-ratio">盈利 / 总计样本</span>
+          </div>
+        </div>
+        <div class="kpi-card glass-card">
+          <div class="kpi-icon gain-bg"><i class="fa-solid fa-arrow-trend-up"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">平均 5 日最高冲高</span>
+            <div class="kpi-value text-color-green" id="stat-avg-gain">+--%</div>
+            <span class="kpi-sub">潜在最大波段获利</span>
+          </div>
+        </div>
+        <div class="kpi-card glass-card">
+          <div class="kpi-icon loss-bg"><i class="fa-solid fa-shield-heart"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">平均 5 日最大回撤</span>
+            <div class="kpi-value text-color-red" id="stat-avg-loss">---%</div>
+            <span class="kpi-sub">风控安全边际参考</span>
+          </div>
+        </div>
+        <div class="kpi-card glass-card">
+          <div class="kpi-icon rank-bg"><i class="fa-solid fa-medal"></i></div>
+          <div class="kpi-info">
+            <span class="kpi-label">首选 Top 1 胜率</span>
+            <div class="kpi-value text-color-blue" id="stat-top1-win">--%</div>
+            <span class="kpi-sub" id="stat-rank-breakdown">Top2: --% | Top3: --%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 历史跟踪明细表格 -->
+      <section class="card glass-card tracker-table-card">
+        <div class="card-header tracker-header-flex">
+          <h2><i class="fa-solid fa-list-ol header-icon"></i>历史推荐标的实盘收益与走势追踪</h2>
+          <div class="tracker-filters">
+            <input type="text" id="tracker-search" class="custom-input" placeholder="🔍 搜索股票/代码/主线方向...">
+            <select id="tracker-status-filter" class="custom-select">
+              <option value="ALL">全部状态</option>
+              <option value="WIN">🟢 超预期冲高 (WIN)</option>
+              <option value="DRAW">🟡 震荡蓄势 (DRAW)</option>
+              <option value="LOSS">🔴 回撤走弱 (LOSS)</option>
+              <option value="PENDING">⏳ 跟踪中 (PENDING)</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-container">
+            <table class="modern-table tracker-table">
+              <thead>
+                <tr>
+                  <th>决策日期</th>
+                  <th>排名</th>
+                  <th>股票代码</th>
+                  <th>股票名称</th>
+                  <th>所属主线 / 方向</th>
+                  <th>评分</th>
+                  <th>开盘买入价</th>
+                  <th>T日收盘</th>
+                  <th>T+1收益</th>
+                  <th>T+3收益</th>
+                  <th>5日最高冲高</th>
+                  <th>5日最大回撤</th>
+                  <th>实盘走势状态</th>
+                </tr>
+              </thead>
+              <tbody id="tracker-table-body">
+                <tr>
+                  <td colspan="13" class="text-center text-muted">正在加载历史跟踪数据...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 数据库未初始化时的缺省页 -->
+    <div class="empty-state fade-in" id="empty-state" style="display: none;">
+      <i class="fa-solid fa-folder-open empty-icon"></i>
+      <h2>未找到选股决策数据</h2>
+      <p>共享数据库尚未写入任何每日选股决策结果。请先在 Python 后端执行 <code>python backend/main.py</code> 导入数据！</p>
+    </div>
+  </div>
+
+  <!-- Custom Javascript Logic -->
+  <script src="index.js"></script>
+</body>
+</html>

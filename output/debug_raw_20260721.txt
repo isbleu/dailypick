@@ -1,0 +1,11 @@
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="openrouter_web_search">
+<｜DSML｜parameter name="query" string="true">湖南发展 000722 2026年7月20日 收盘价 流通市值</｜DSML｜parameter>
+</｜DSML｜invoke>
+<｜DSML｜invoke name="openrouter_web_search">
+<｜DSML｜parameter name="query" string="true">新易盛 300502 近5日涨跌幅 2026年7月15日 7月20日</｜DSML｜parameter>
+</｜DSML｜invoke>
+<｜DSML｜invoke name="openrouter_web_search">
+<｜DSML｜parameter name="query" string="true">星网锐捷 002396 近5日涨跌幅 2026年7月14日 7月20日</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>

@@ -1,0 +1,11 @@
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="openrouter_web_search">
+<｜DSML｜parameter name="query" string="true">瑞芯微 603893 7月10日 7月15日 股价 涨跌幅 2026</｜DSML｜parameter>
+</｜DSML｜invoke>
+<｜DSML｜invoke name="openrouter_web_search">
+<｜DSML｜parameter name="query" string="true">鹏鼎控股 002938 7月10日 7月15日 股价 成交 2026</｜DSML｜parameter>
+</｜DSML｜invoke>
+<｜DSML｜invoke name="web_search">
+<｜DSML｜parameter name="query" string="true">2026年7月16日 A股 AI手机概念 鹏鼎控股 瑞芯微 全志科技 股价涨幅</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>

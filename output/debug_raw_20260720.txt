@@ -1,0 +1,8 @@
+<｜｜DSML｜｜tool_calls>
+<｜｜DSML｜｜invoke name="openrouter_web_search">
+<｜｜DSML｜｜parameter name="query" string="true">天孚通信 300394 2026年7月20日 股价 涨跌幅 流通市值</｜｜DSML｜｜parameter>
+</｜｜DSML｜｜invoke>
+<｜｜DSML｜｜invoke name="openrouter_web_search">
+<｜｜DSML｜｜parameter name="query" string="true">长飞光纤 601869 2026年7月20日 股价 涨跌幅 流通市值 近5日</｜｜DSML｜｜parameter>
+</｜｜DSML｜｜invoke>
+</｜｜DSML｜｜tool_calls>

@@ -1,0 +1,366 @@
+{
+  "msg-1783432247-9lIEqz6dYn6ULiychGZJ": {
+    "id": "msg-1783432247-9lIEqz6dYn6ULiychGZJ",
+    "characterId": "USER",
+    "contentType": "text",
+    "context": "main-chat",
+    "createdAt": "2026-07-07T13:50:47.031Z",
+    "updatedAt": "2026-07-07T13:50:47.031Z",
+    "isRetrying": false,
+    "isEdited": false,
+    "isCollapsed": false,
+    "type": "user",
+    "items": [
+      {
+        "id": "item-1783432247-4vkerK68X8bmNpBwuQUe",
+        "type": "message"
+      }
+    ]
+  },
+  "msg-1783432247-wO3gqXiIGrjUAbKbODDp": {
+    "id": "msg-1783432247-wO3gqXiIGrjUAbKbODDp",
+    "characterId": "char-1783432246-6Js50eKeee3LNQBalM7U",
+    "contentType": "text",
+    "context": "main-chat",
+    "parentMessageId": "msg-1783432247-9lIEqz6dYn6ULiychGZJ",
+    "createdAt": "2026-07-07T13:50:47.032Z",
+    "updatedAt": "2026-07-07T13:53:57.969Z",
+    "isRetrying": false,
+    "isEdited": false,
+    "isCollapsed": false,
+    "type": "assistant",
+    "isGenerating": false,
+    "metadata": {
+      "plugins": [],
+      "variantSlug": "tencent/hy3-20260706:free",
+      "serverTools": {
+        "webSearchEngine": "auto",
+        "webFetchEngine": "auto"
+      },
+      "generationId": "gen-1783432248-chVOdmFA86GZQO3fhbkV",
+      "duration": 179561,
+      "tokensCount": 18635,
+      "tokensPerSecond": 103.78088783199024,
+      "cost": "0",
+      "routerMetadata": {
+        "requested": "tencent/hy3:free",
+        "strategy": "direct",
+        "region": "SJC",
+        "summary": "available=2, selected=SiliconFlow",
+        "attempt": 1,
+        "is_byok": false,
+        "endpoints": {
+          "total": 2,
+          "available": [
+            {
+              "provider": "SiliconFlow",
+              "model": "tencent/hy3-20260706:free",
+              "selected": true
+            },
+            {
+              "provider": "Novita",
+              "model": "tencent/hy3-20260706:free",
+              "selected": false
+            }
+          ]
+        },
+        "pipeline": [
+          {
+            "type": "server_tools",
+            "name": "server-tools",
+            "summary": "Server tools invoked (sdk): openrouter:datetime",
+            "data": {
+              "mode": "sdk",
+              "tools": [
+                "openrouter:datetime"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "id": "rs_tmp_tzjdaf68vk",
+        "outputIndex": 0,
+        "type": "reasoning",
+        "sequenceIndex": 0
+      },
+      {
+        "id": "msg_tmp_xkqm6trqvq",
+        "outputIndex": 1,
+        "type": "message",
+        "sequenceIndex": 1
+      }
+    ]
+  },
+  "msg-1783432247-d9JlaTp6UO0kHfthNYIG": {
+    "id": "msg-1783432247-d9JlaTp6UO0kHfthNYIG",
+    "characterId": "char-1783432246-Bi4SfQU2g2KMIJR5AA4k",
+    "contentType": "text",
+    "context": "main-chat",
+    "parentMessageId": "msg-1783432247-9lIEqz6dYn6ULiychGZJ",
+    "createdAt": "2026-07-07T13:50:47.033Z",
+    "updatedAt": "2026-07-07T13:57:28.149Z",
+    "isRetrying": false,
+    "isEdited": false,
+    "isCollapsed": false,
+    "type": "assistant",
+    "isGenerating": false,
+    "metadata": {
+      "plugins": [],
+      "variantSlug": "z-ai/glm-5.2-20260616",
+      "serverTools": {
+        "webSearchEngine": "auto",
+        "webFetchEngine": "auto"
+      },
+      "generationId": "gen-1783432248-CCnehC9m9dNk5ysPc8TO",
+      "duration": 385504,
+      "tokensCount": 23711,
+      "tokensPerSecond": 61.506495393043906,
+      "cost": "0.185604092",
+      "routerMetadata": {
+        "requested": "z-ai/glm-5.2",
+        "strategy": "direct",
+        "region": "SJC",
+        "summary": "available=28, selected=Novita",
+        "attempt": 1,
+        "is_byok": false,
+        "endpoints": {
+          "total": 28,
+          "available": [
+            {
+              "provider": "Novita",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": true
+            },
+            {
+              "provider": "GMICloud",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "StreamLake",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "SiliconFlow",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Alibaba",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Io Net",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "AtlasCloud",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "WandB",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Z.AI",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Fireworks",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Parasail",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Together",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Fireworks",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Morph",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "DeepInfra",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Baidu",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Wafer",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "AkashML",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Cloudflare",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Venice",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Ambient",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Phala",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Wafer",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Inceptron",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "DekaLLM",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "DigitalOcean",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Decart",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            },
+            {
+              "provider": "Friendli",
+              "model": "z-ai/glm-5.2-20260616",
+              "selected": false
+            }
+          ]
+        },
+        "pipeline": [
+          {
+            "type": "server_tools",
+            "name": "server-tools",
+            "summary": "Server tools invoked (sdk): openrouter:datetime, openrouter:web_search, openrouter:web_fetch",
+            "data": {
+              "mode": "sdk",
+              "tools": [
+                "openrouter:datetime",
+                "openrouter:web_search",
+                "openrouter:web_fetch"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "id": "rs_tmp_udjklh7p8h",
+        "outputIndex": 0,
+        "type": "reasoning",
+        "sequenceIndex": 0
+      },
+      {
+        "id": "st_tmp_d8iticgco5l",
+        "outputIndex": 1,
+        "type": "openrouter:web_search",
+        "sequenceIndex": 1
+      },
+      {
+        "id": "st_tmp_w4q8k5e1wj",
+        "outputIndex": 2,
+        "type": "openrouter:web_search",
+        "sequenceIndex": 2
+      },
+      {
+        "id": "rs_tmp_p16mkhjhiz",
+        "outputIndex": 3,
+        "type": "reasoning",
+        "sequenceIndex": 3
+      },
+      {
+        "id": "st_tmp_ryv1pwi05o",
+        "outputIndex": 4,
+        "type": "openrouter:web_search",
+        "sequenceIndex": 4
+      },
+      {
+        "id": "st_tmp_usot8ypid4",
+        "outputIndex": 5,
+        "type": "openrouter:web_search",
+        "sequenceIndex": 5
+      },
+      {
+        "id": "st_tmp_cb7hjje8vwj",
+        "outputIndex": 6,
+        "type": "openrouter:web_search",
+        "sequenceIndex": 6
+      },
+      {
+        "id": "rs_tmp_w25av4h03",
+        "outputIndex": 7,
+        "type": "reasoning",
+        "sequenceIndex": 7
+      },
+      {
+        "id": "msg_tmp_tkrbyu3j1p",
+        "outputIndex": 8,
+        "type": "message",
+        "sequenceIndex": 8
+      },
+      {
+        "id": "st_tmp_1x2pm0ckrdj",
+        "outputIndex": 9,
+        "type": "openrouter:web_search",
+        "sequenceIndex": 9
+      },
+      {
+        "id": "rs_tmp_4hytg4z58jo",
+        "outputIndex": 10,
+        "type": "reasoning",
+        "sequenceIndex": 10
+      },
+      {
+        "id": "msg_tmp_m9j4xk0bg6d",
+        "outputIndex": 11,
+        "type": "message",
+        "sequenceIndex": 11
+      }
+    ]
+  }
+}
